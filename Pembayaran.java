@@ -11,7 +11,7 @@ package test;
  */
 import java.util.Scanner;
 
-public class MenuMakanan {
+public class Pembayaran {
     public static void main (String[]args){
         Scanner in = new Scanner(System.in);
         //variabel nama menu
