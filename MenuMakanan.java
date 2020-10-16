@@ -59,9 +59,9 @@ public class MenuMakanan {
                     System.out.println("Pilihan anda "+menumakanan);
                     harga = harga + h3;
                     break;
-//            jika selain nomor satu sampai tiga, maka akan ditampilkan "Nomor yang dipilih tidak ada di menu."
+        //output jika tidak ada nomor yang ada dimenu
                 default:
-                    System.out.println("Nomor yang dipilih tidak ada di menu.");
+                    System.out.println("Nomor tidak ada di menu.");
                     break;
             }
         //input jumlah pesanan
