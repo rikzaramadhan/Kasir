@@ -40,10 +40,10 @@ public class MenuMakanan {
         //memilih jenis pesanan
          System.out.print("Silahkan pilih kode pesanan : ");
         
-         int inNomor = in.nextInt();
+         int kode = in.nextInt();
          System.out.println("======================================");
 
-            switch (inNomor) {
+            switch (kode) {
                 case 1:
                     menumakanan = " Kentang Goreng";
                     System.out.println("Pilihan anda " +menumakanan);
