@@ -40,10 +40,10 @@ public class MenuMakanan {
         //memilih jenis pesanan
          System.out.print("Silahkan pilih kode pesanan : ");
         
-         int inNomor = in.nextInt();
+         int kode = in.nextInt();
          System.out.println("======================================");
 
-            switch (inNomor) {
+            switch (kode) {
                 case 1:
                     menumakanan = " Kentang Goreng";
                     System.out.println("Pilihan anda " +menumakanan);
@@ -59,7 +59,7 @@ public class MenuMakanan {
                     System.out.println("Pilihan anda "+menumakanan);
                     harga = harga + h3;
                     break;
-//            jika selain nomor satu sampai tiga, maka akan ditampilkan "Nomor yang dipilih tidak ada di menu."
+                //output jika kode tidak terdapat pada menu
                 default:
                     System.out.println("Nomor yang dipilih tidak ada di menu.");
                     break;
@@ -69,7 +69,7 @@ public class MenuMakanan {
         jp = in.nextInt();
        
       // output total harga
-        System.out.println("Total harga :"+(harga*jp));
+        System.out.println("Total harga : Rp."+(harga*jp));
        
         System.out.println("======================================");
         
