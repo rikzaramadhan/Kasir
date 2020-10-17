@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
 
 /**
  *
  * @author baros
  */
 import java.util.Scanner;
-
 public class Pembayaran {
     public static void main (String[]args){
         Scanner in = new Scanner(System.in);
@@ -67,11 +65,18 @@ public class Pembayaran {
         //input jumlah pesanan
         System.out.print("Silahkan masukkan jumlah pesanan : ");
         jp = in.nextInt();
-       
+        
       // output total harga
-        System.out.println("Total harga : Rp."+(harga*jp));
+        int tagihan = harga*jp;
+        System.out.println("Tagihan : Rp. "+(tagihan));
+        System.out.println("======================================");
+      // output kembalian customer  
+      System.out.print("Pembayaran Rp. ");
+      int nominal = in.nextInt();
+        System.out.println("kembalian Rp."+(nominal-tagihan));
        
         System.out.println("======================================");
         
     }
 }
+
