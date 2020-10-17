@@ -1,3 +1,4 @@
+import java.util.Date;
 class ManajemenInventori {
 	
 	protected int IdBarang;
@@ -21,6 +22,9 @@ class ManajemenInventori {
 
 	public class IdBarang {
 	public static void main(String[] args){
+
+		Date date = new Date();
+		System.out.println(date.toString());
 
 		int inputIdBarang = 5;
 		int inputJumlahBarangMasuk = 100;
