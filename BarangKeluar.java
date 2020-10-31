@@ -1,17 +1,17 @@
 import java.util.Date;
 
-interface IdBarangInterface{
+interface BarangKeluarInterface{
 public void check () ;
 }
 
-	class ManajemenInventori implements IdBarangInterface{
+	class ManajemenInventori implements BarangKeluarInterface{
 	protected int IdBarang;
-	protected int JumlahBarangMasuk; 
+	protected int JumlahBarangKeluar; 
 
 	private int correctIdBarang = 5; 
-	public ManajemenInventori(int IdBarang, int JumlahBarangMasuk){
+	public ManajemenInventori(int IdBarang, int JumlahBarangKeluar){
 		this.IdBarang = IdBarang;
-		this.JumlahBarangMasuk = JumlahBarangMasuk; 
+		this.JumlahBarangKeluar = JumlahBarangKeluar; 
 	}
 	
 	public void check(){
@@ -24,17 +24,17 @@ public void check () ;
 	}
 }
 
-	public class IdBarang {
+	public class BarangKeluar {
 	public static void main(String[] args){
 
 		Date date = new Date();
 		System.out.println(date.toString());
 
 		int inputIdBarang = 5;
-		int inputJumlahBarangMasuk = 100; //barang keluar sisa barang keluar
+		int inputJumlahBarangKeluar = 50; //barang keluar sisa barang keluar
 
-		ManajemenInventori MI = new ManajemenInventori(inputIdBarang, inputJumlahBarangMasuk);
+		ManajemenInventori MI = new ManajemenInventori(inputIdBarang, inputJumlahBarangKeluar);
 		MI.check();
-		System.out.println("Barang Yang Masuk 100");
+		System.out.println("Barang Yang Keluar 50");
 	}
 }

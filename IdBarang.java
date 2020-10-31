@@ -31,7 +31,7 @@ public void check () ;
 		System.out.println(date.toString());
 
 		int inputIdBarang = 5;
-		int inputJumlahBarangMasuk = 100; //barang keluar sisa barang keluar
+		int inputJumlahBarangMasuk = 100; 
 
 		ManajemenInventori MI = new ManajemenInventori(inputIdBarang, inputJumlahBarangMasuk);
 		MI.check();
