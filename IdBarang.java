@@ -1,6 +1,10 @@
 import java.util.Date;
-class ManajemenInventori {
-	
+
+interface IdBarangInterface{
+public void check () ;
+}
+
+	class ManajemenInventori implements IdBarangInterface{
 	protected int IdBarang;
 	protected int JumlahBarangMasuk; 
 
@@ -27,10 +31,10 @@ class ManajemenInventori {
 		System.out.println(date.toString());
 
 		int inputIdBarang = 5;
-		int inputJumlahBarangMasuk = 100;
+		int inputJumlahBarangMasuk = 100; //barang keluar sisa barang keluar
 
 		ManajemenInventori MI = new ManajemenInventori(inputIdBarang, inputJumlahBarangMasuk);
 		MI.check();
-		System.out.println("Barang Berhasil Dimasukkan");
+		System.out.println("Barang Yang Masuk 100");
 	}
 }
