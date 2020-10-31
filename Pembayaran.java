@@ -4,26 +4,6 @@
  * and open the template in the editor.
  */
 package kasir;
-/*class menuMakanan{
-       
-    public int kodeMakanan;
-    public String namaMakanan;
-    public int hargaMakanan;
-    
-    public menuMakanan(int kodeMakanan, String namaMakanan,int hargaMakanan){
-        this.kodeMakanan = kodeMakanan;
-        this.namaMakanan = namaMakanan;
-        this.hargaMakanan = hargaMakanan;
-   }      
-}
-class makanan extends menuMakanan{
-
-    public (int kodeMakanan, String namaMakanan, int hargaMakanan) {
-        super(kodeMakanan, namaMakanan, hargaMakanan);
-    }
-
-    }
-*/
 import java.util.Scanner;
         
 public class Pembayaran{  
