@@ -1,4 +1,8 @@
-class Regis{
+interface RegistrasiKasirInterface{
+	public void test();
+}
+
+class Regis implements RegistrasiKasirInterface {
 	String nama;
 	String email;
 	String password;
