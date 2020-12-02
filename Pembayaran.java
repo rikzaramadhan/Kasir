@@ -59,7 +59,7 @@ public class Kasir{
                      hargaLaptop = ACER.gethargaLaptop();
                 }
                  
-               // kodeMakanan = in.nextInt();
+            
                 System.out.println(kodeLaptop+ "." + " "  + namaLaptop);
                 
                 // input jumlah pesanan
