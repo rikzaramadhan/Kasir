@@ -31,7 +31,7 @@ CREATE TABLE barang (
 DROP TABLE IF EXISTS bayar;
 
 CREATE TABLE pembayaran (
-  IdBayar int(5) NOT NULL PRIMARY KEY AUOTO_INCREMENT,
+  IdBayar int(5) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   Id_Barang char(10) NOT NULL,
   NamaBarang char(20) NOT NULL,
   Harga_Barang int(20) NOT NULL,
