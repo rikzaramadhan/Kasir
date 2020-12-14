@@ -2,37 +2,30 @@ package kasir;
 import java.util.Scanner;
         
 public class Kasir{  
-             int kodeLaptop, hargaLaptop;
-             String namaLaptop;
-
-            public Kasir(int kodeLaptop, String namaLaptop, int hargaLaptop){
-                this.kodeLaptop = kodeLaptop;
-                this.namaLaptop = namaLaptop;
-                this.hargaLaptop = hargaLaptop;
-            }
-            //method 1
-            public int getkodeLaptop(){
-                return kodeLaptop;
-            }
-            //method 2
-            public String getnamaLaptop(){
-                return namaLaptop;
-            }
-            //method 3
-            public int gethargaLaptop(){
-                return hargaLaptop;
-            }
-            @Override
-            public String toString(){
-                return(this.getkodeLaptop() + this.getnamaLaptop() + this.gethargaLaptop());
-    }
-
+ 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        Kasir MSI = new Kasir(1, "MSI", 10000000);
-        Kasir ASUS = new Kasir(2, "ASUS", 12000000);
-        Kasir ACER = new Kasir(3, "ACER", 14000000);
+        // membuat objek kategorilaptop
+        kategoriLaptop kategorilaptop = new kategoriLaptop();
         
+        // objek msi
+        msi laptopMSI = new msi ();
+        laptopMSI.kodeLaptop = 1;
+        laptopMSI.namaLaptop = "MSI";
+        laptopMSI.hargaLaptop = 10000000;
+        
+        //objek asus
+        asus laptopASUS = new asus ();
+        laptopASUS.kodeLaptop = 2;
+        laptopASUS.namaLaptop = "ASUS";
+        laptopASUS.hargaLaptop = 12000000;
+        
+         //objek acer
+        acer laptopACER = new acer ();
+        laptopACER.kodeLaptop = 3;
+        laptopACER.namaLaptop = "ACER";
+        laptopACER.hargaLaptop = 14000000;
+                
                 System.out.println("======================================");
                 System.out.println("       TOKO MENDING RAKTIT LAPTOP     ");
                 System.out.println("======================================");
@@ -48,18 +41,18 @@ public class Kasir{
                 String namaLaptop = "";
                 int hargaLaptop = 0;
                 
-                 if (kodeLaptop == MSI.getkodeLaptop()) {
-                     namaLaptop = MSI.getnamaLaptop();
-                     hargaLaptop = MSI.gethargaLaptop();
-                 } else if (kodeLaptop == ASUS.getkodeLaptop()) {
-                     namaLaptop = ASUS.getnamaLaptop();
-                     hargaLaptop = ASUS.gethargaLaptop();
-                } else if (kodeLaptop== ACER.getkodeLaptop()) {
-                     namaLaptop = ACER.getnamaLaptop();
-                     hargaLaptop = ACER.gethargaLaptop();
+                 if (kodeLaptop == laptopMSI.getkodeLaptop()) {
+                     namaLaptop = laptopMSI.getnamaLaptop();
+                     hargaLaptop = laptopMSI.gethargaLaptop();
+                 } else if (kodeLaptop == laptopASUS.getkodeLaptop()) {
+                     namaLaptop = laptopASUS.getnamaLaptop();
+                     hargaLaptop = laptopASUS.gethargaLaptop();
+                } else if (kodeLaptop== laptopACER.getkodeLaptop()) {
+                     namaLaptop = laptopACER.getnamaLaptop();
+                     hargaLaptop = laptopACER.gethargaLaptop();
                 }
                  
-            
+               // kodeMakanan = in.nextInt();
                 System.out.println(kodeLaptop+ "." + " "  + namaLaptop);
                 
                 // input jumlah pesanan
