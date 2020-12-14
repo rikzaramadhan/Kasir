@@ -13,7 +13,7 @@ CREATE TABLE akun (
   password char(20) NOT NULL,
   level_user char(10) NOT NULL,
   INDEX(email)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 
 DROP TABLE if EXISTS barang;
@@ -26,7 +26,7 @@ CREATE TABLE barang (
   jml_barang_masuk int(10) NOT NULL,
   jml_barang_keluar int(10) NOT NULL,
   INDEX (nama_barang)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 DROP TABLE if EXISTS bayar;
 
@@ -37,6 +37,6 @@ nama_barang char(50) NOT NULL,
 harga_barang int(20) NOT NULL,
 tanggal_bayar date NOT NULL,
 FOREIGN KEY (idbarang) references barang(idbarang) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=tf8mb4 COLLATE=utf8mb4_general_ci;
 
 
