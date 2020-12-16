@@ -1,56 +1,62 @@
 import java.util.Date;
 
 interface BarangInterface{
-		//membuat class implements yaitu class ManajamenInventori dari interface BarangInterface
 public void check () ;
 }
 
 	class ManajemenInventori implements BarangInterface{
-	int idBarang;  //membuat variabel dengan tipe integer karena berupa angka
+	int idBarang;  
+	String nama;
+	int harga;
 	int jumlahBarangMasuk; 
 	int jumlahBarangKeluar;
 	int jumlah;
 
-	private int correctIdBarang = 5; //merupakan variabel global, yang bisa diakses dari semua fungsi
-
-	public ManajemenInventori(int idBarang, int jumlahBarangMasuk, int jumlahBarangKeluar){ //merupakan variabel yang ada di parameter
-		this.idBarang = idBarang;//this merupakan keyword yang mengacu pada class
+	public ManajemenInventori(int idBarang, int jumlahBarangMasuk, int jumlahBarangKeluar){ 
+		this.idBarang = idBarang;
+		this.nama = nama;
+		this.harga = harga;
 		this.jumlahBarangMasuk = jumlahBarangMasuk; 
 		this.jumlahBarangKeluar = jumlahBarangKeluar;
 
 	}
 	
 	public void check(){
-			//digunakan untuk mengakses variabel global dalam fungsi check
-			//validasi Id 
-		if(this.idBarang == this.correctIdBarang){
-			System.out.println("Id Sesuai");
-		}else {
-			System.out.println("Id Tidak Sesuai");
+		if(this.idBarang == this.idBarang){
+			System.out.println("Id = B2656");
+		}
+		if(this.nama == this.nama){
+			System.out.println("Barang = Kopi");
+		}
+		if(this.harga == this.harga){
+			System.out.println("Harga = 4000");
 		}
 		if(this.jumlahBarangMasuk == this.jumlahBarangMasuk){
-			System.out.println("Jumlah Barang Masuk 100 ");
+			System.out.println("Jumlah Barang Masuk = 100 ");
 		}
 		if(this.jumlahBarangKeluar == this.jumlahBarangKeluar){
-			System.out.println("Jumlah Barang Keluar 50 ");
+			System.out.println("Jumlah Barang Keluar = 50 ");
 		}
 			jumlah = jumlahBarangMasuk - jumlahBarangKeluar;
 			System.out.println("Jumlah = " + jumlah );
 	}
 }
 
-	public class Barang {  //membuat class Barang
-	public static void main(String[] args){ //method
 
-		Date date = new Date();//membuat tanggal otomatis 
+
+	public class Barang {  
+	public static void main(String[] args){ 
+
+		Date date = new Date();
 		System.out.println(date.toString());
 
-		int idBarang = 5; //atribut
+		int idBarang = 5; 
+		String nama = "Kopi";
+		int harga = 4000;
 		int jumlahBarangMasuk = 100;
 		int jumlahBarangKeluar = 50;
 
 		ManajemenInventori MI = new ManajemenInventori(idBarang, jumlahBarangMasuk, jumlahBarangKeluar);
 		MI.check();
-		//memanggil fungsi check dari class ManajemenInventori
 	}
 }
