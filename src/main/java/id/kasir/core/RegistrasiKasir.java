@@ -1,4 +1,3 @@
-import java.sql.Statement;
 
 interface RegistrasiKasirInterface{
 	public void test();
@@ -31,56 +30,7 @@ class Regis implements RegistrasiKasirInterface{
 	System.out.println(" 2. User / Karyawan \n ");
 
 	System.out.println(" Level User = ");
-
-public class ShowRegis extends ConfigDatabase {
-    public boolean insertPost(Registrasi post) {
-
-        String sql = "INSERT INTO akun (`id`, `username`, `email`, `no_tlp`, `password`, `level_user`) VALUES ('%d', '%s', '%s', '%d', '%s', '%s')"; 
-        sql = String.format(sql, post.getid(), post.getusername(), post.getemail(), post.getno_tlp(), post.getpassword(), post.getlevel_user());
         
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
-public class ShowRegis extends ConfigDatabase {
-    public boolean insertPost(Registrasi post) {
-        String sql = "UPDATE akun SET password='%s' WHERE id=%d"; 
-        sql = String.format(sql, post.getpassword(), post.getid());
-        
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
-public class ShowRegis extends ConfigDatabase {
-    public boolean insertPost(Registrasi post) {
-        String sql = String.format("DELETE FROM akun WHERE id=%d" , id); 
-        
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
-
 	if(this.leveluser == correctLeveluser){
 		System.out.println(" Admin / Pemilik Toko \n ");
 	}else{
@@ -103,9 +53,8 @@ public class ShowRegis extends ConfigDatabase {
 		System.out.println(" Registrasi Berhasil \n ");
 	}else{
 		System.out.println(" Konfirmasi password gagal \n  ");
-	}
-	}
-}
+	}}}
+
 public class RegistrasiKasir{
 	public static void main(String[] args) {
 		String leveluser = " Admin / Pemilik Toko ";
