@@ -12,7 +12,7 @@ public void check () ;
 	int jumlahBarangKeluar;
 	int jumlah;
 
-	public ManajemenInventori(int idBarang, int jumlahBarangMasuk, int jumlahBarangKeluar){ 
+	public ManajemenInventori(int idBarang, int jumlahBarangMasuk, int jumlahBarangKeluar){
 		this.idBarang = idBarang;
 		this.nama = nama;
 		this.harga = harga;
@@ -22,6 +22,7 @@ public void check () ;
 	}
 	
 	public void check(){
+ 
 		if(this.idBarang == this.idBarang){
 			System.out.println("Id = B2656");
 		}
@@ -42,10 +43,8 @@ public void check () ;
 	}
 }
 
-
-
-	public class Barang {  
-	public static void main(String[] args){ 
+	public class Barang {
+	public static void main(String[] args){
 
 		Date date = new Date();
 		System.out.println(date.toString());
