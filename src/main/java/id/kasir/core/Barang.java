@@ -1,5 +1,4 @@
 import java.util.Date;
-import java.sql.Statement;
 
 interface BarangInterface{
 public void check () ;
@@ -45,72 +44,6 @@ public void check () ;
     }
 }
 
-public class ShowBarang extends ConfigDatabase {
-    public boolean insertPost(Barang post) {
-        String sql = "INSERT INTO barang (`id`, `nama`, `harga`, `tanggal`, `jumlahbarangmasuk`, `jumlahbarangkeluar`) VALUES ('%s', '%s', '%d', '%d', '%d', '%d')";
-        sql = String.format(sql, post.getid(), post.getnama(), post.getharga(), post.gettanggal(), post.getjumlahbarangmasuk(), post.getjumlahbarangkeluar());
-        
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
-
-public class ShowBarang extends ConfigDatabase {
-    public boolean insertPost(Barang post) {
-        String sql = "SELECT * FROM barang WHERE nama =? AND harga=?";
-        sql = String.format(sql, post.getnama(), post.getharga());
-        
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
-
-public class ShowBarang extends ConfigDatabase {
-    public boolean insertPost(Barang post) {
-        String sql = "UPDATE barang SET jumlahbarangkeluar=%d WHERE id=%s";
-        sql = String.format(sql, post.getjumlahbarangkeluar(), post.getid());
-        
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
-
-public class ShowBarang extends ConfigDatabase {
-    public boolean insertPost(Barang post) {
-        String sql = "DELETE FROM barang WHERE id=%s";
-        
-        try {
-            Statement stmt = this.connection.createStatement();
-            stmt.execute(sql);
-            return true;
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
 
     public class Barang {  
     public static void main(String[] args){ 
