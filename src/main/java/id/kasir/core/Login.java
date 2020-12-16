@@ -1,4 +1,3 @@
-import java.sql.Statement;
  
 interface LoginInterface{
      public void check();
@@ -13,47 +12,22 @@ interface LoginInterface{
     }
 
    public void check() {    //mengecek apakah username dan password nya ditemukan
-       if(this.username.equals("username") && (this.password.equals("password"))){
-		System.out.println("Welcome");
-		
-	}else {
-		System.out.println("Account not found");
-	}
+       if(this.username.equals("Novita Khasanah") && (this.password.equals("novitaa12"))){
+        System.out.println("Welcome");
+        
+    }else {
+        System.out.println("Account not found");
+    }
    }
  }
 
-public class ShowAkun extends configDatabase {
-
-    private boolean status;
-    private String errorMessage;
-    
-    public boolean insertPost(Login post) {
-        
-        String getUsername;
-        String getPassword;
-        
-        String sql = "SELECT * FROM akun WHERE username =? AND password=?";
-        sql = String.format(sql, post.getUsername(), post.getPassword());
-        
-        try {
-            Statement stmt = this..createStatement();
-            stmt.execute(sql);
-            return true;
-
-        } catch (Exception e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
-            return false;
-        }
-    }
-}
 
 public class Login{      //mengeksekusi usename dan password yang diinput
     public static void main(String[] args){   
-        String username = null;
-        String password = null;
+        String username = "Novita Khasanah";
+        String password = "novitaa12";
           
-	password masuk=new password(username,password);
+    password masuk=new password(username,password);
         masuk.check();
     }
 }
