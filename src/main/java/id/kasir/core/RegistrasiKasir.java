@@ -1,17 +1,22 @@
+
 interface RegistrasiKasirInterface{
 	public void test();
+
 }
 
-class Regis implements RegistrasiKasirInterface {
+class Regis implements RegistrasiKasirInterface{
+	String leveluser;
 	String nama;
 	String email;
 	String password;
 	String konfirmPassword;
 
+	private String correctLeveluser = " Admin / Pemilik Toko ";
 	private String correctNama = "dyah111";
-	private String namaEmail = "syafrinadyah16@gmail.com";
+	private String namaEmail = "syafrinadyah@gmail.com";
 
-	public Regis(String nama, String email, String password, String konfirmPassword) {
+	public Regis(String Leveluser, String nama, String email, String password, String konfirmPassword ){
+		this.leveluser = leveluser;
 		this.nama = nama;
 		this.email = email;
 		this.password = password;
@@ -19,31 +24,46 @@ class Regis implements RegistrasiKasirInterface {
 	}
 
 	public void test(){
-		if(this.nama == this.correctNama){
-			System.out.println(" Nama Sesuai");
-		}else{
-			System.out.println(" Nama tidak sesuai ");
-		}
-		if(this.email == this.namaEmail){
-			System.out.println(" Email terdaftar / Berhasil");
-		}else{
-			System.out.println(" Email tidak terdaftar ");
-		}
-		if(this.password == this.konfirmPassword){
-			System.out.println("Registrasi Berhasil");
-		}else{
-			System.out.println("Konfirmasi password gagal");
-		}
+
+	System.out.println(" >>>Pilih User<<< ");
+	System.out.println(" 1. Admin / Pemilik Toko ");
+	System.out.println(" 2. User / Karyawan \n ");
+
+	System.out.println(" Level User = ");
+        
+	if(this.leveluser == correctLeveluser){
+		System.out.println(" Admin / Pemilik Toko \n ");
+	}else{
+		System.out.println();
 	}
-}
+		System.out.println(" Nama = ");
+	if(this.nama == this.correctNama){
+		System.out.println(" Nama Sesuai \n ");
+	}else{
+		System.out.println(" Nama tidak sesuai \n ");
+	}
+		System.out.println(" Email = ");
+	if(this.email == this.namaEmail){
+		System.out.println(" Email terdaftar / Berhasil \n ");
+	}else{
+		System.out.println(" Email tidak terdaftar \n ");
+	}
+		System.out.println(" Registrasi = ");
+	if(this.password == this.konfirmPassword){
+		System.out.println(" Registrasi Berhasil \n ");
+	}else{
+		System.out.println(" Konfirmasi password gagal \n  ");
+	}}}
+
 public class RegistrasiKasir{
 	public static void main(String[] args) {
-		String nama = "dyah";
+		String leveluser = " Admin / Pemilik Toko ";
+		String nama = "dyah111";
 		String email = "syafrinadyah16@gmail.com";
 		String password = "123456";
 		String konfirmPassword ="123456";
 
-		Regis RS = new Regis(nama,email,password,konfirmPassword);
-		RS.test();
+		Regis TS = new Regis(leveluser,nama,email,password,konfirmPassword);
+		TS.test();
 	}
 }
