@@ -5,16 +5,14 @@ public void check () ;
 }
 
     class ManajemenInventori implements BarangInterface{
-    protected int idBarang;  
+    protected String idBarang;  
     protected String nama;
     protected int harga;
     protected int jumlahBarangMasuk; 
     protected int jumlahBarangKeluar;
     protected int jumlah;
 
-    private int correctIdBarang = 5; 
-
-    public ManajemenInventori(int idBarang, int jumlahBarangMasuk, int jumlahBarangKeluar){ 
+    public ManajemenInventori(String idBarang, String nama, int harga, int jumlahBarangMasuk, int jumlahBarangKeluar){ 
         this.idBarang = idBarang;
         this.nama = nama;
         this.harga = harga;
@@ -51,13 +49,13 @@ public void check () ;
         Date date = new Date();
         System.out.println(date.toString());
 
-        int idBarang = 5; 
+        String idBarang = "B2656"; 
         String nama = "Kopi";
         int harga = 4000;
         int jumlahBarangMasuk = 100;
         int jumlahBarangKeluar = 50;
 
-        ManajemenInventori MI = new ManajemenInventori(idBarang, jumlahBarangMasuk, jumlahBarangKeluar);
+        ManajemenInventori MI = new ManajemenInventori(idBarang, nama, harga, jumlahBarangMasuk, jumlahBarangKeluar);
         MI.check();
     }
 }
