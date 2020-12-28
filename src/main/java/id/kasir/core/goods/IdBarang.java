@@ -1,11 +1,7 @@
-import java.util.Date;
+//membuat class implements yaitu class ManajamenInventori dari interface BarangMasukInterface
 
-interface IdBarangInterface{
-	//membuat class implements yaitu class ManajamenInventori dari interface BarangMasukInterface
-public void check () ;
-}
 
-	class ManajemenInventori implements IdBarangInterface{
+	class ManajemenInventori{
 	int IdBarang; //membuat variabel dengan tipe integer karena berupa angka
 	int JumlahBarangMasuk; 
 
@@ -31,9 +27,7 @@ public void check () ;
 	public class IdBarang { //membuat class IdBarang
 	public static void main(String[] args){ //method
 
-		Date date = new Date(); //membuat tanggal otomatis
-		System.out.println(date.toString());
-
+	
 		int inputIdBarang = 5;
 		int inputJumlahBarangMasuk = 100; 
 
