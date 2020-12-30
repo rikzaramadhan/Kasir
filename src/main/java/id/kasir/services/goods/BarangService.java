@@ -11,20 +11,17 @@ public class BarangService extends Configurasi {
         String getIdBarang;
         String getName;
         String getPrice;
-        String getDate;
-        String getAmount;
-        
-        String sql = "INSERT INTO barang (`IdBarang`, `Name`, `Price`, `Date`, `Amount`) VALUES ('%s', '%s', '%s', '%s', '%s')";
-        sql = String.format(sql, post.getIdBarang(), post.getName(), post.getPrice(), post.getDate(), post.getAmount());
-        
+        String getStock;
+
+        String sql = "INSERT INTO barang (`IdBarang`, `Name`, `Price`, `Stock`) VALUES ('%s', '%s', '%d', '%d')";
+        sql = String.format(sql, post.getIdBarang(), post.getName(), post.getPrice(), post.getStock());
+
         try {
-            Statement stmt = this.createStatement();
+            Statement stmt = this.connection.createStatement();
             stmt.execute(sql);
             return true;
-
-        } catch (SQLException e) {
-            this.status = false;
-            this.errorMessage = e.getMessage();
+        } catch (SQLException e) { 
+            System.out.println(e);
             return false;
         }
     }
@@ -52,11 +49,11 @@ public class BarangService extends Configurasi {
     }
     public boolean UpdatePost(Post post) {
 
-        String getAmount;
+        String getStock;
         String getIdBarang;
                 
-        String sql = "UPDATE barang SET Amount=%d WHERE IdBarang=%s";
-        sql = String.format(sql, post.getAmount(), post.getIdBarang());
+        String sql = "UPDATE barang SET Stock=%d WHERE IdBarang=%s";
+        sql = String.format(sql, post.getStock(), post.getIdBarang());
         
         try {
             Statement stmt = this.createStatement();
@@ -73,7 +70,7 @@ public class BarangService extends Configurasi {
 
         String getIdBarang;
                 
-        String sql = "DELETE FROM barang WHERE IdBarang=%d";
+        String sql = "DELETE FROM barang WHERE IdBarang=%s";
         sql = String.format(sql, post.getIdBarang()); 
         
         try {

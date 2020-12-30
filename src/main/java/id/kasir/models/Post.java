@@ -8,11 +8,10 @@ public class Post {
     private String Password;
     private String email;
     private Boolean levelUser;
-    private int idBarang;
+    private String idBarang;
     private String name;
     private int price;
-    private Date date;
-    private int amount;
+    private int Stock;
     private Boolean info;
     private int published;
     private long publishedAt;
@@ -40,7 +39,7 @@ public class Post {
         return this.levelUser;
     }
     
-    public int getIdBarang() {
+    public String getIdBarang() {
         return this.idBarang;
     }
     
@@ -52,12 +51,8 @@ public class Post {
         return this.price;
     }
     
-    public Date getDate() {
-        return this.date;
-    }
-    
-    public int getAmount() {
-        return this.amount;
+    public int getStock() {
+        return this.Stock;
     }
     
     public Boolean getInfo() {
@@ -100,7 +95,7 @@ public class Post {
         this.levelUser = levelUser;
     }
     
-    public void setIdBarang(int idBarang) {
+    public void setIdBarang(String idBarang) {
         this.idBarang = idBarang;
     }
     
@@ -112,12 +107,8 @@ public class Post {
         this.price = price;
     }
     
-    public void setDate(Date date) {
-        this.date = date;
-    }
-    
-    public void setAmount(int amount) {
-        this.amount = amount;
+    public void setStock(int Stock) {
+        this.Stock = Stock;
     }
     
     public void setInfo(Boolean info) {
