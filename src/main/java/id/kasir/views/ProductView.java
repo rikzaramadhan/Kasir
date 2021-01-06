@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package id.kasir.app.view;
 
 import id.kasir.app.core.ConfigDb;
@@ -12,6 +17,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 
+/**
+ *
+ * @author LENOVO
+ */
 public class ProductView {
 //mendeklarasikan objek frame atau tampilan, button, label, textfield
 
@@ -44,13 +53,6 @@ public class ProductView {
         Delete();  
         
         Tambah();
-
-        clear();
-
-        enabled();
-
-        desabled();
-
     }
 
     static void Frame() {
@@ -124,29 +126,6 @@ public class ProductView {
         }
     }
 
-    static void clear() {
-        txtidBarang.setText("");
-        txtname.setText("");
-        txtprice.setText("");
-        txtStock.setText("");
-    }
-
-    static void enabled() {
-        txtidBarang.enable(true);
-        txtname.enable(true);
-        txtprice.enable(true);
-        txtStock.enable(true);
-        txtidBarang.requestFocus();
-    }
-
-    static void desabled() {
-        txtidBarang.enable(false);
-        txtname.enable(false);
-        txtprice.enable(false);
-        txtStock.enable(false);
-
-    }
-
     static void Update() {
         btnUpdate.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -172,7 +151,6 @@ public class ProductView {
                 } catch (SQLException e) {
                     System.out.println("Error : " + e.getMessage());
                 }
-//                }
 
             }
         });
@@ -193,8 +171,6 @@ public class ProductView {
                     txtprice.setText("");
                     txtStock.setText("");
                     Table();
-                    clear();
-                    desabled();
                     JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -205,11 +181,11 @@ public class ProductView {
         });
     }
     static void Tambah() {
-        btnUpdate.addActionListener(new ActionListener() {
+        btnTambah.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
             String idbarang = txtidBarang.getText();
                 try {
-                    String sql = ("INSERT INTO barang  "+ txtidBarang.getText()+" + ");
+                    String sql = ("INSERT INTO barang (idBarang, name, price, Stock) VALUES ('"+txtidBarang.getText()+"', '"+txtname.getText()+"', '"+txtprice.getText()+"', '"+txtStock.getText()+"')");
                     java.sql.Connection conn = new MySQL().getConnection();
                     java.sql.Statement stm = conn.createStatement();
                     stm.executeUpdate(sql);
@@ -218,8 +194,6 @@ public class ProductView {
                     txtprice.setText("");
                     txtStock.setText("");
                     Table();
-                    clear();
-                    desabled();
                     JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
                 } catch (SQLException e) {
                     System.out.println(e.getMessage());
@@ -230,4 +204,3 @@ public class ProductView {
     }
 
 }
-       
