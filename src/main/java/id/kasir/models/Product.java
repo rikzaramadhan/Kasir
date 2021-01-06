@@ -1,15 +1,15 @@
 
 class ManajemenInventori{
     String idBarang;  
-    String nama;
-    int harga;
-    int stock;
+    String name;
+    int price;
+    int Stock;
     
-    public ManajemenInventori(String idBarang, String nama, int harga, int stock){ 
+    public ManajemenInventori(String idBarang, String name, int price, int Stock){ 
         this.idBarang = idBarang;
-        this.nama = nama;
-        this.harga = harga;
-        this.stock = stock; 
+        this.name = name;
+        this.price = price;
+        this.Stock = Stock; 
 
     }
     
@@ -17,13 +17,13 @@ class ManajemenInventori{
         if(this.idBarang == this.idBarang){
             System.out.println("Id = B2656");
         }
-        if(this.nama == this.nama){
-            System.out.println("Barang = Kopi");
+        if(this.name == this.name){
+            System.out.println("Name = Kopi");
         }
-        if(this.harga == this.harga){
-            System.out.println("Harga = 4000");
+        if(this.price == this.price){
+            System.out.println("Price = 4000");
         }
-        if(this.stock == this.stock){
+        if(this.Stock == this.Stock){
             System.out.println("Stock = 100 ");
         }
 } 
@@ -32,10 +32,10 @@ class ManajemenInventori{
     public static void main(String[] args){ 
 
         String idBarang = "B2656"; 
-        String nama = "Kopi";
-        int harga = 4000;
-        int stock = 100;
+        String name = "Kopi";
+        int price = 4000;
+        int Stock = 100;
 
-        ManajemenInventori MI = new ManajemenInventori(idBarang, nama, harga, stock);
+        ManajemenInventori MI = new ManajemenInventori(idBarang, name, price, Stock);
         MI.check(); 
     }}
