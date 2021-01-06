@@ -1,7 +1,7 @@
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class BarangService extends Configurasi {
+public class ProductService extends Configurasi {
 
     private boolean status;
     private String errorMessage;
