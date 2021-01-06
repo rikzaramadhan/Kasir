@@ -1,48 +1,41 @@
 
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author baros
- */
-public class Product {
+class ManajemenInventori{
+    String idBarang;  
+    String nama;
+    int harga;
+    int stock;
     
-  public int Code, Price;
-  public String Name;
+    public ManajemenInventori(String idBarang, String nama, int harga, int stock){ 
+        this.idBarang = idBarang;
+        this.nama = nama;
+        this.harga = harga;
+        this.stock = stock; 
 
-  //SETTER
-  public void setCode(int code) {
-    this.Code = code;
-  }
-
-  public void setName(String name) {
-    this.Name = name;
-  }
-
-  public void  setPrice(int price) {
-    this.Price = price;
-  }
-
- 
-
-  //GETTER
-  public int getCode() {
-    return Code;
-  }
-  
-  public int getPrice() {
-    return Price;
-  }
-  
-  public String getName() {
-    return Name;
-  }
+    }
+    
+    public void check(){
+        if(this.idBarang == this.idBarang){
+            System.out.println("Id = B2656");
+        }
+        if(this.nama == this.nama){
+            System.out.println("Barang = Kopi");
+        }
+        if(this.harga == this.harga){
+            System.out.println("Harga = 4000");
+        }
+        if(this.stock == this.stock){
+            System.out.println("Stock = 100 ");
+        }
+} 
 }
+    public class Product {  
+    public static void main(String[] args){ 
 
+        String idBarang = "B2656"; 
+        String nama = "Kopi";
+        int harga = 4000;
+        int stock = 100;
 
+        ManajemenInventori MI = new ManajemenInventori(idBarang, nama, harga, stock);
+        MI.check(); 
+    }}
