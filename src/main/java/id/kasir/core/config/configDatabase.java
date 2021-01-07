@@ -1,3 +1,5 @@
+package id.payment.app.core;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +10,6 @@
  *
  * @author baros
  */
-<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -17,34 +18,20 @@ public class configDatabase {
  
     public static Connection con;
     public static Statement stm;
-    public static void main(String []args) {
+    public static void createConnection() {
         
         try {
             String url ="jdbc:mysql://localhost/kasir";
             String user="root";
             String pass="";
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             con =DriverManager.getConnection(url,user,pass);
             stm = con.createStatement();
-            System.out.println("koneksi berhasil;");
-        } catch (ClassNotFoundException | SQLException e) {
-            System.err.println("koneksi gagal" +e.getMessage());
+            System.out.println(" ");
+        } catch (ClassNotFoundException | SQLException error) {
+            System.err.println("koneksi gagal : " +error.getMessage());
         }
     }
     
-=======
-import java.sql.*;
-
-public class configDatabase {
-    
-    private String HOSTNAME = "127.0.0.1";
-    private String USERNAME = "root";
-    private String DBNAME = "kasirKevin";
-    private int PORT = 3306;
-
-    protected String getJdbcDatabaseUrl() {
-        return String.format("jdbc:mysql://%s:%s@%s:%d/%s", this.USERNAME, this.HOSTNAME, this.PORT, this.DBNAME);
-    }
->>>>>>> e2dae0e3b425abcc55f78a20a8962eed7f07df14
 }
 
