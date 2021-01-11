@@ -7,6 +7,8 @@ package id.kasir.app.view;
 
 import id.kasir.app.core.ConfigDb;
 import id.kasir.app.core.MySQL;
+import id.kasir.app.models.Productpost;
+import id.kasir.app.core.ProductService;
 import javax.swing.*;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -16,6 +18,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 /**
  *
@@ -26,20 +29,19 @@ public class ProductView {
 
     static JFrame frame = new JFrame();
     static JLabel lbJudul = new JLabel("Produk");
-    static JLabel lbidBarang = new JLabel("Id Barang");
-    static JLabel lbname = new JLabel("Name");
-    static JLabel lbprice = new JLabel("Price");
+    static JLabel lbCode = new JLabel("Code");
+    static JLabel lbName = new JLabel("Name");
+    static JLabel lbPrice = new JLabel("Price");
     static JLabel lbStock = new JLabel("Stock");
     static JTable tabelbarang = new JTable();
     static JButton btnUpdate = new JButton("Update");
     static JButton btnDelete = new JButton("Delete");
     static JButton btnTambah = new JButton("Tambah");
-   
 
     //membuat dan memanggil jLabel baru dengan objek
-    static JTextField txtidBarang = new JTextField();
-    static JTextField txtname = new JTextField();
-    static JTextField txtprice = new JTextField();
+    static JTextField txtCode = new JTextField();
+    static JTextField txtName = new JTextField();
+    static JTextField txtPrice = new JTextField();
     static JTextField txtStock = new JTextField();
 
     public static void main(String[] args) {
@@ -50,8 +52,8 @@ public class ProductView {
 
         Update();
 
-        Delete();  
-        
+        Delete();
+
         Tambah();
     }
 
@@ -64,35 +66,34 @@ public class ProductView {
         frame.setLayout(null);
 
         frame.add(lbJudul);
-        frame.add(lbidBarang);
-        frame.add(lbname);
-        frame.add(lbprice);
+        frame.add(lbCode);
+        frame.add(lbName);
+        frame.add(lbPrice);
         frame.add(lbStock);
         frame.add(tabelbarang);
         frame.add(btnUpdate);
         frame.add(btnDelete);
         frame.add(btnTambah);
 
-        frame.add(txtidBarang);
-        frame.add(txtname);
-        frame.add(txtprice);
+        frame.add(txtCode);
+        frame.add(txtName);
+        frame.add(txtPrice);
         frame.add(txtStock);
 
         lbJudul.setBounds(330, 25, 100, 40);
         lbJudul.setFont(new java.awt.Font("Tohama", 1, 20));
-        lbidBarang.setBounds(60, 80, 160, 30);
-        lbname.setBounds(60, 120, 160, 30);
-        lbprice.setBounds(60, 160, 160, 30);
+        lbCode.setBounds(60, 80, 160, 30);
+        lbName.setBounds(60, 120, 160, 30);
+        lbPrice.setBounds(60, 160, 160, 30);
         lbStock.setBounds(60, 200, 160, 30);
         tabelbarang.setBounds(120, 280, 450, 230);
         btnUpdate.setBounds(100, 550, 100, 20);
         btnDelete.setBounds(300, 550, 100, 20);
         btnTambah.setBounds(500, 550, 100, 20);
-        
 
-        txtidBarang.setBounds(240, 80, 160, 30);
-        txtname.setBounds(240, 120, 160, 30);
-        txtprice.setBounds(240, 160, 160, 30);
+        txtCode.setBounds(240, 80, 160, 30);
+        txtName.setBounds(240, 120, 160, 30);
+        txtPrice.setBounds(240, 160, 160, 30);
         txtStock.setBounds(240, 200, 160, 30);
 
     }
@@ -101,29 +102,23 @@ public class ProductView {
 
         DefaultTableModel model = new DefaultTableModel();
         tabelbarang.setModel(model);
-        model.addColumn("idBarang");
-        model.addColumn("name");
-        model.addColumn("price");
+        model.addColumn("Code");
+        model.addColumn("Name");
+        model.addColumn("Price");
         model.addColumn("Stock");
 
-        try {
-            String sql = "SELECT * FROM barang";
-            java.sql.Connection conn = new MySQL().getConnection();
-            java.sql.Statement stm = conn.createStatement();
-            java.sql.ResultSet res = stm.executeQuery(sql);
+        ProductService service = new ProductService();
+        List<Productpost> products = service.selectBarang();
 
-            while (res.next()) {
-                Object[] obj = new Object[4];
-                obj[0] = res.getString("idBarang");
-                obj[1] = res.getString("name");
-                obj[2] = res.getString("price");
-                obj[3] = res.getString("Stock");
-                model.addRow(obj);
-            }
-            tabelbarang.setModel(model);
-        } catch (SQLException e) {
-            System.out.println("Error : " + e.getMessage());
+        for (Productpost product : products) { 
+            Object[] obj = new Object[4];
+            obj[0] = product.getCode();
+            obj[1] = product.getName();
+            obj[2] = product.getPrice();
+            obj[3] = product.getStock();
+            model.addRow(obj);
         }
+        tabelbarang.setModel(model);
     }
 
     static void Update() {
@@ -131,74 +126,73 @@ public class ProductView {
             public void actionPerformed(ActionEvent evt) {
 
                 int selectedRow = tabelbarang.getSelectedRow();
-                String idBarang = (String) tabelbarang.getValueAt(selectedRow, 0);
-                String name = (String) tabelbarang.getValueAt(selectedRow, 1);
-                String price = (String) tabelbarang.getValueAt(selectedRow, 2);
-                String stock = (String) tabelbarang.getValueAt(selectedRow, 3);
+                String Code = (String) tabelbarang.getValueAt(selectedRow, 0);
+                String Name = (String) tabelbarang.getValueAt(selectedRow, 1);
+                String Price = (String) tabelbarang.getValueAt(selectedRow, 2);
+                Integer stock = (Integer) tabelbarang.getValueAt(selectedRow, 3);
 
-                try {
-                    String sql = ("UPDATE barang " + "SET " + "name = '" + name + "',"
-                            + "price = '" + price + "'," + "Stock = '" + stock + "'"
-                            + "WHERE " + "idBarang = '" + idBarang + "'");
-                    java.sql.Connection conn = new MySQL().getConnection();
-                    java.sql.Statement stm = conn.createStatement();
-                    stm.executeUpdate(sql);
-                    txtidBarang.setText("");
-                    txtname.setText("");
-                    txtprice.setText("");
-                    txtStock.setText("");
+                Productpost productpost = new Productpost();
+                productpost.setCode(Code);
+                productpost.setName(Name);
+                productpost.setPrice(Integer.parseInt(Price));
+                productpost.setStock(stock);
+                
+                ProductService service = new ProductService();
+                boolean update = service.updateBarang(productpost);
+                if (update) {
+                    JOptionPane.showMessageDialog(null, "Berhasil diupdate");
                     Table();
-                } catch (SQLException e) {
-                    System.out.println("Error : " + e.getMessage());
+                } else {
+                    JOptionPane.showMessageDialog(null, "Tidak dapat diupdate");
                 }
 
             }
         });
     }
+
     static void Delete() {
         btnDelete.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 int selectedRow = tabelbarang.getSelectedRow();
-                String idBarang = (String) tabelbarang.getValueAt(selectedRow, 0);
+                String Code = (String) tabelbarang.getValueAt(selectedRow, 0);
 
-                try {
-                    String sql = "DELETE FROM barang WHERE idBarang = '" + idBarang + "'";
-                    java.sql.Connection conn = new MySQL().getConnection();
-                    java.sql.Statement stm = conn.createStatement();
-                    stm.execute(sql);
-                    txtidBarang.setText("");
-                    txtname.setText("");
-                    txtprice.setText("");
-                    txtStock.setText("");
+                ProductService service = new ProductService();
+                Productpost productpost = new Productpost();
+                productpost.setCode(Code);
+                boolean delete = service.deleteBarang(productpost);
+
+                if (delete) {
+                    JOptionPane.showMessageDialog(null, "Berhasil dihapus");
                     Table();
-                    JOptionPane.showMessageDialog(null, "Data berhasil dihapus");
-                } catch (SQLException e) {
-                    System.out.println(e.getMessage());
-                    JOptionPane.showMessageDialog(null, "Data gagal dihapus");
-                 }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Tidak dapat dihapus");
                 }
-       
+
+            }
+
         });
     }
+
     static void Tambah() {
         btnTambah.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
-            String idbarang = txtidBarang.getText();
-                try {
-                    String sql = ("INSERT INTO barang (idBarang, name, price, Stock) VALUES ('"+txtidBarang.getText()+"', '"+txtname.getText()+"', '"+txtprice.getText()+"', '"+txtStock.getText()+"')");
-                    java.sql.Connection conn = new MySQL().getConnection();
-                    java.sql.Statement stm = conn.createStatement();
-                    stm.executeUpdate(sql);
-                    txtidBarang.setText("");
-                    txtname.setText("");
-                    txtprice.setText("");
-                    txtStock.setText("");
-                    Table();
-                    JOptionPane.showMessageDialog(null, "Data berhasil disimpan");
-                } catch (SQLException e) {
-                    System.out.println(e.getMessage());
-                    JOptionPane.showMessageDialog(null, "Data gagal disimpan");                }
+                String Code = txtCode.getText().toString();
 
+                Productpost Productpost = new Productpost();
+                Productpost.setCode(txtCode.getText());
+                Productpost.setName(txtName.getText());
+                Productpost.setPrice(Integer.parseInt(txtPrice.getText()));
+                Productpost.setStock(Integer.parseInt(txtStock.getText()));
+
+                ProductService service = new ProductService();
+                boolean tambah = service.insertBarang(Productpost);
+
+                if (tambah) {
+                    JOptionPane.showMessageDialog(null, "Berhasil Ditambahkan ");
+                    Table();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Gagal ");
+                }
             }
         });
     }
