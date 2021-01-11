@@ -1,25 +1,15 @@
-package id.payment.app.models;
+package id.kasir.app.models;
+import id.kasir.app.models.Productpost;
 
-
-
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author baros
- */
-public class productModel {
-    
-  public int Price, Stock;
-  public String Name, Code;
-  
+public class Productpost {
+   
+    private String Code;
+    private String Name;
+    private int Price;
+    private int Stock;
+ //deklarasi variable dengan modifier private agar hanya dapat diakses class itu sendiri.  
   //SETTER
-  public void setCode(String code) {
+  public void setCode(String code) { 
     this.Code = code;
   }
 
@@ -52,6 +42,4 @@ public class productModel {
   public int getStock() {
     return Stock;
   }
-}
-
-
+ }
