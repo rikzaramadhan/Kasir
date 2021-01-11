@@ -13,18 +13,13 @@ package kasir.app.view;
 // mengimport package yg dibutuhkan
 import javax.swing.*;
 import java.awt.event.*;
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import kasir.app.core.mysql;
-import kasir.app.core.registrasiService;
+import kasir.app.core.registrationService;
+import kasir.app.models.registrationPost;
+import kasir.app.core.service;
 
 
 
-public class registrationView { // membuat class registrasiView
+public class registrationView { 
     
     //mendeklarasikan objek frame atau tampilan ,button,label,textField
     
@@ -119,7 +114,7 @@ public class registrationView { // membuat class registrasiView
         txtConfirmPassword.setBounds(240, 280, 160, 30);
          // mengatur letak dan ukuran dari text username,email,level user,password,konfirmasi password
  
-        btnRegister.setBounds(225, 350, 100, 20);
+        btnRegister.setBounds(170, 350, 100, 20);
          // mengatur letak dan ukuran dari button / tombol register  
         
     }
@@ -132,7 +127,6 @@ public class registrationView { // membuat class registrasiView
         txtPassword.setText("");
         txtConfirmPassword.setText("");
     }
-    
     
     //untuk button register
     static void Register(){ // untuk method tombol registrasi untuk memberikan eksekusi
@@ -147,39 +141,41 @@ public class registrationView { // membuat class registrasiView
         // membuat method actionPerformed 
         
        
-       String id = txtId.getText();
-       String username = txtUsername.getText();
-       String email = txtEmail.getText();
-       String leveluser = txtLevelUser.getText();
-       String password = txtPassword.getText();
-       String konfirmpassword = txtConfirmPassword.getText();
+       String Id = txtId.getText().toString();
+       String username = txtUsername.getText().toString();
+       String email = txtEmail.getText().toString();
+       String levelUser = txtLevelUser.getText().toString();
+       String password = txtPassword.getText().toString();
+       String confirmpassword = txtConfirmPassword.getText().toString();
        // untuk memasukkan data usernaem, email, leveluser, password, konfirmasi password
-       try{
-           if(konfirmpassword.equals(password)){
-               // untuk mengecek konfirmasi password sesuai atau tidak dengan password
-               
-               mysql db = new mysql();
-               java.sql.Connection connection = db.getConnection();
-               java.sql.Statement stmt = connection.createStatement();
-               stmt.execute("INSERT INTO akun VALUES ("+"'"+txtId.getText()+"', "
-                       + "'"+ txtUsername.getText()+"', "+"'"+ txtEmail.getText()+"', "
-                       + "'"+ txtLevelUser.getText()+"', "+"'"+ txtPassword.getText()+"', "
-                       + "'"+ txtConfirmPassword.getText()+"')");
-               
-                   JOptionPane.showMessageDialog(null,"Registrasi berhasil ");
-                   // menampilkan pesan registrasi berhasil jika password dan konfirmasi password sama 
-           
-               New();
-           }else{
-               JOptionPane.showMessageDialog(null,"Konfirmasi password salah / ulangi ");
-               // menampilkan pesan konfirmasi password salah jika password dan konfirmasi password beda
-                   New();
-           };
        
-           } catch (SQLException e) {
-               System.out.println("Error : " + e.getMessage());
+        registrationPost.setId(Id);
+        registrationPost.setUsername(username);
+        registrationPost.setEmail(email);
+        registrationPost.setLevelUser(levelUser);
+        registrationPost.setPassword(password);
+        registrationPost.setConfirmpassword(confirmpassword);
+        
+        registrationService service = new registrationService();
+        registrationPost registrationPost = new registrationPost();
+             
+             if ( (confirmpassword.equals(password))&&(password.equals(password)) ){ 
+                 boolean test = service.functionInsert(registrationPost);
+             if(test){
+                JOptionPane.showMessageDialog(null," Registrasi sukses ");
+                    New();
+       }else{
+               JOptionPane.showMessageDialog(null," ");
+               New();
            }
-       }     
-      
-    });
+             }else{
+                 JOptionPane.showMessageDialog(null," Registrasi gagal ");
+                 New();
+             }       
+        
+     }
+           
+       });
     }}
+               
+    
