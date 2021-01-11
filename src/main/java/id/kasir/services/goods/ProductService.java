@@ -16,7 +16,7 @@ import id.kasir.app.models.Productpost;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductService extends Service implements userInterface{//melakukan inheritance dari service dan userinterface
+public class ProductService extends Service implements userInterfaceProduct {//melakukan inheritance dari service dan userinterface
    String txtCode;
    String txtName;
    String txtPrice;
